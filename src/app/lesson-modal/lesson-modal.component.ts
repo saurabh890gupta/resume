@@ -1,5 +1,6 @@
-import { Component ,ChangeDetectorRef,OnChanges} from '@angular/core';
+import { AfterViewInit, Component ,ElementRef,OnInit, ViewChild} from '@angular/core';
 import { DatePipe } from '@angular/common';
+// import { BsModalRef } from 'ngx-bootstrap';
 // import * as $ from "jquery";
 // import * as $ from 'jquery';
 // declare var $: JQueryStatic;
@@ -15,7 +16,7 @@ declare var $: any;
   styleUrl: './lesson-modal.component.scss',
   providers: [DatePipe]
 })
-export class LessonModalComponent {
+export class LessonModalComponent implements OnInit {
   currentDateAndTime:any
   constructor(private datePipe: DatePipe) {
     this.currentDateAndTime = this.datePipe.transform(new Date(), 'MMMM d, y');
@@ -28,15 +29,16 @@ export class LessonModalComponent {
 
   dowloadCover(){
     const link = document.createElement('a');
-  link.setAttribute('target', '_blank');
-  link.setAttribute('href', '../../assets/saurabh coverPage.jpg');
-  link.setAttribute('download', `saurabh coverPage.jpg`);
-  document.body.appendChild(link);
-  link.click();
-  link.remove();
+    link.setAttribute('target', '_blank');
+    link.setAttribute('href', '../../assets/saurabh coverPage.jpg');
+    link.setAttribute('download', `saurabh coverPage.jpg`);
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
   }
 
   modalPopup() {
     $('#exampleModalScrollable').modal('show');
   }
 }
+
